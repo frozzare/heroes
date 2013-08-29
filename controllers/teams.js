@@ -1,4 +1,4 @@
-var Doris = require('../lib/Doris');
+var Doris = require('../lib/doris');
 
 module.exports = function (app) {
   // GET: /teams/create
