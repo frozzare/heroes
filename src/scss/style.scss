@@ -61,4 +61,20 @@ body {
       background: transparent;
     }
   }
+
+  .bar-title .button-next {
+    background: white;
+    border: none;
+    border-radius: 5px;
+    text-shadow: none;
+    color: black;
+    text-transform: uppercase;
+    font-weight: bold;
+    &:before,
+    &:after {
+      background: none;
+      border: none;
+      box-shadow: none;
+    }
+  }
 }

@@ -26,11 +26,11 @@
   <body class="<%= typeof klass !== 'undefined' ? klass : '' %>">
     <% if (typeof title !== 'undefined') { %>
     <header class="bar-title">
+      <h1 class="title"><%= title %></h1>
       <% if (typeof previous !== 'undefined') { %>
-        <a class="button-prev" onclick="javascript:history.back(1)">
+        <a class="button-next" onclick="javascript:history.back(1)">
           Back
         </a>
       <% } %>
-      <h1 class="title"><%= title %></h1>
     </header>
     <% } %>

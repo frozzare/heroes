@@ -57,3 +57,17 @@ body.standard-view > .content {
   margin-top: 130px;
   background: transparent;
 }
+body .bar-title .button-next {
+  background: white;
+  border: none;
+  border-radius: 5px;
+  text-shadow: none;
+  color: black;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+body .bar-title .button-next:before, body .bar-title .button-next:after {
+  background: none;
+  border: none;
+  box-shadow: none;
+}

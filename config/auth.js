@@ -1,4 +1,5 @@
-var Doris = require('../lib/doris');
+var Doris = require('../lib/doris')
+  , url = 'http://localhost:3000';
 
 module.exports = function (app, passport, FacebookStrategy) {
   passport.serializeUser(function(user, done) {
@@ -12,7 +13,7 @@ module.exports = function (app, passport, FacebookStrategy) {
   passport.use(new FacebookStrategy({
       clientID: '558696214178336',
       clientSecret: '2b3d4d5449ac470c5d21c6039a6280af',
-      callbackURL: 'http://localhost:3000/auth/facebook/callback',
+      callbackURL: url + '/auth/facebook/callback',
       profileFields: ['id', 'displayName', 'photos']
     },
     function (accessToken, refreshToken, profile, done) {

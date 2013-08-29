@@ -8,4 +8,4 @@ var app = require('./config/app')()
   , fs = require('fs');
 
 // Listen to port.
-app.listen(app.get('port'));
+app.listen(process.argv[2] || app.get('port'));
