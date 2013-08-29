@@ -1,5 +1,14 @@
 var Doris = require('../lib/doris')
+  , os = require('os')
+  , clientId = '558696214178336'
+  , clientSecret = '2b3d4d5449ac470c5d21c6039a6280af'
   , url = 'http://localhost:3000';
+
+if (os.hostname() === 'pukka') {
+  clientId = '506274396120782';
+  clientSecret = 'f18a6184ce96c3d3c0e81faae3619099';
+  url = 'http://heroes.forsmo.me';
+}
 
 module.exports = function (app, passport, FacebookStrategy) {
   passport.serializeUser(function(user, done) {
