@@ -20,8 +20,8 @@ module.exports = function (app, passport, FacebookStrategy) {
   });
 
   passport.use(new FacebookStrategy({
-      clientID: '558696214178336',
-      clientSecret: '2b3d4d5449ac470c5d21c6039a6280af',
+      clientID: clientId,
+      clientSecret: clientSecret,
       callbackURL: url + '/auth/facebook/callback',
       profileFields: ['id', 'displayName', 'photos']
     },
