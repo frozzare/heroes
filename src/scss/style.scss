@@ -1,3 +1,64 @@
-.m20 {
-  margin-top: 20px;
+$bgColor: #E52421;
+
+.content {
+  padding: 20px;
+  .text {
+    margin-bottom: 20px;
+    h2 {
+      margin-top: 10px;
+      margin-bottom: 5px;
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    p {
+      margin-bottom: 5px;
+    }
+    a {}
+  }
+}
+
+.green {
+  background: #34BA15;
+}
+
+.red {
+  background: #E71E1E;
+}
+
+body {
+  a {
+    color: white;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &.login-view {
+    background: $bgColor url(../img/start_screen.png) no-repeat;
+    background-size: 100%;
+    width: 100%;
+    a {
+      background: url(../img/start_screen_btn_text.png) no-repeat;
+      text-indent: -9999px;
+      margin-top: 411px;
+      background-size: 100%;
+      width: 100%;
+      float: left;
+    }
+  }
+  &.standard-view {
+    background: $bgColor url(../img/page_logo.png) no-repeat;
+    background-size: 100%;
+    &> header {
+      background: transparent;
+      border: 0;
+      .title {
+        display: none;
+      }
+    }
+    &> .content {
+      margin-top: 130px;
+      background: transparent;
+    }
+  }
 }

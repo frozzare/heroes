@@ -15,6 +15,6 @@ module.exports = function (app) {
   });
 
   // POST: /teams/join
-  app.get('/teams/join', /* ensureAuthenticated, */ function (req, res) {
+  app.post('/teams/join', /* ensureAuthenticated, */ function (req, res) {
   });
 };

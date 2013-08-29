@@ -1,3 +1,59 @@
-.m20 {
-  margin-top: 20px;
+.content {
+  padding: 20px;
+}
+.content .text {
+  margin-bottom: 20px;
+}
+.content .text h2 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.content .text h2:first-child {
+  margin-top: 0;
+}
+.content .text p {
+  margin-bottom: 5px;
+}
+
+.green {
+  background: #34BA15;
+}
+
+.red {
+  background: #E71E1E;
+}
+
+body a {
+  color: white;
+}
+body a:hover {
+  text-decoration: underline;
+}
+body.login-view {
+  background: #e52421 url(../img/start_screen.png) no-repeat;
+  background-size: 100%;
+  width: 100%;
+}
+body.login-view a {
+  background: url(../img/start_screen_btn_text.png) no-repeat;
+  text-indent: -9999px;
+  margin-top: 411px;
+  background-size: 100%;
+  width: 100%;
+  float: left;
+}
+body.standard-view {
+  background: #e52421 url(../img/page_logo.png) no-repeat;
+  background-size: 100%;
+}
+body.standard-view > header {
+  background: transparent;
+  border: 0;
+}
+body.standard-view > header .title {
+  display: none;
+}
+body.standard-view > .content {
+  margin-top: 130px;
+  background: transparent;
 }

@@ -1,0 +1,15 @@
+<%
+  var title = 'Mission A';
+%>
+
+<%- include ../../partials/header.html %>
+<div class="content">
+  <div class="text">
+    <h2>Hit the button</h1>
+    <form method="post" action="/team/mission/0/play">
+      <input type="hidden" id="mission_key" name="mission_key" value="jkagekj090" />
+      <button class="button-block button-main">Hit me!</button>
+    </form>
+  </div>
+</div>
+<%- include ../../partials/footer.html %>
