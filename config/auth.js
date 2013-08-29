@@ -1,3 +1,5 @@
+var Doris = require('../lib/doris');
+
 module.exports = function (app, passport, FacebookStrategy) {
   passport.serializeUser(function(user, done) {
     done(null, user);
@@ -14,27 +16,19 @@ module.exports = function (app, passport, FacebookStrategy) {
       profileFields: ['id', 'displayName', 'photos']
     },
     function (accessToken, refreshToken, profile, done) {
-      process.nextTick(function () {
-        var user = {
-          alias: profile.username,
-          uid: profile.id,
-          name: {
-            first: profile.name.givenName,
-            last: profile.name.familyName
-          }
-        };
-        app.set('loggedin', true);
-        return done(null, profile);
+      Doris.addUser(profile, function (err, user) {
+        if (err) return done(err);
+        done(null, user);
       });
     }
   ));
 
-  app.get('/auth/facebook', passport.authenticate('facebook', {
-    scope: 'read_stream'
-  }));
+  app.get('/auth/facebook', passport.authenticate('facebook'));
 
-  app.get('/auth/facebook/callback', passport.authenticate('facebook', {
-    successRedirect: '/',
-    failureRedirect: '/login'
-  }));
+  app.get('/auth/facebook/callback',
+    passport.authenticate('facebook', { failureRedirect: '/login' }),
+    function(req, res) {
+      console.log(req.body, req.params, req.session, req.cookies);
+      res.redirect('/');
+    });
 }

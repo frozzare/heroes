@@ -1,5 +1,5 @@
 module.exports = function (app) {
-  app.get('/', function (req, res) {
+  app.get('/', app.ensureAuthenticated, function (req, res) {
     res.render('index');
   });
 
@@ -16,5 +16,18 @@ module.exports = function (app) {
   app.get('/*', function (req, res, next) {
     console.log(req.url);
     next();
+  });
+
+  app.get('/test', function (req, res) {
+    var Doris = require('../lib/doris');
+    /*Doris.addUserToTeam('521fadeac42aab5016000001', '1', function () {
+      console.log(arguments);
+    });*/
+    console.log(req.session.passport.user._id);
+    res.send('{"ok":true}');
+  });
+
+  app.use(function(req, res, next) {
+    next()
   });
 };

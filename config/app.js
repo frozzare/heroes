@@ -20,6 +20,15 @@ module.exports = function () {
     app.use(app.router);
   });
 
+  app.ensureAuthenticated = function (req, res, next) {
+    if (req.session.passport.user !== undefined) {
+      return next();
+    } else if (req.url !== '/login') {
+      return res.redirect('/auth/facebook')
+      //return next();
+    }
+  };
+
   require('./auth')(app, passport, FacebookStrategy);
   require('./routes')(app);
   require('./controllers')(app);
