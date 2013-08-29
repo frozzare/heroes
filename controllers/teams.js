@@ -15,7 +15,7 @@ module.exports = function (app) {
       points: 0,
       bounsPoints: 0
     }, function (err, _res) {
-      Doris.addUserToTeam (req.session.passport.user._id, ('' + _res._id), function (err, _res) {
+      Doris.addUserToTeam(req.session.passport.user._id, ('' + _res._id), function (err, _res) {
         res.redirect('/team/waiting');
       });
     });

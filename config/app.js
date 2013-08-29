@@ -24,8 +24,8 @@ module.exports = function () {
     if (req.session.passport.user !== undefined) {
       return next();
     } else if (req.url !== '/login') {
-      return res.redirect('/auth/facebook')
-      //return next();
+      //return res.redirect('/auth/facebook')
+      return next();
     }
   };
 

@@ -22,10 +22,13 @@
     <a class="button-positive button-block" href="<%= nextMissionUrl %>">Next mission</a>
   <% } else { %>
     <ul class="list">
-      <li>Player1</li>
-      <li>Player2</li>
-      <li>Player3</li>
-      <li><i>Wating...</i></li>
+      <% for (var i = 0, l = (numberofMembers - 1); i < l; i++) { %>
+        <% if (typeof players[i] !== 'undefined') { %>
+          <li><%= players[i].displayName %></li>
+        <% } else { %>
+          <li>Waiting on player <%= i + 1 %></li>
+        <% } %>
+      <% } %>
     </ul>
   <% } %>
 </div>

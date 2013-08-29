@@ -1,15 +1,39 @@
+var Doris = require('../lib/doris');
+
 module.exports = function (app) {
 
   function getCompletedOrFailedUrl (req, completed) {
     return '/team/mission/' + req.params.num + '/' + (completed ? 'completed' : 'failed');
   }
 
-
-  // GET: /team/play
-  app.get('/team/waiting', app.ensureAuthenticated, function (req, res) {
-    res.render('team/waiting');
+  // GET: /team/:id/waiting
+  app.get('/team/:id/waiting', app.ensureAuthenticated, function (req, res) {
+    Doris.getTeam(req.params.id, function (err, team) {
+      Doris.users(function (err, users) {
+        var players = [];
+        for (var i = 0, l = users.length; i < l; i++) {
+          if (users[i].teamId === req.params.id) {
+            players.push(users[i]);
+          }
+        }
+        res.render('team/waiting', {
+          teamName: team.name,
+          players: players,
+          numberofMembers: team.numberofMembers
+        });
+      });
+    });
   });
 
+ /* // GET: /team/waiting
+  app.get('/team/waiting', app.ensureAuthenticated, function (req, res) {
+    Doris.getTeamByUserId(req.session.passport.user._id, function (err, team) {
+      res.render('team/waiting', {
+        teamName: team.name
+      });
+    });
+  });
+*/
   // GET: /team/mission/:num
   app.get('/team/mission/:num', app.ensureAuthenticated, function (req, res) {
     if (require('fs').existsSync(__dirname + '/../views/team/mission/' + req.params.num + '.html')) {
@@ -50,10 +74,13 @@ module.exports = function (app) {
 
   // GET: /team/mission/:num/failed
   app.get('/team/mission/:num/waiting', app.ensureAuthenticated, function (req, res) {
-    res.render('team/waiting', {
-      missionCompletedWaiting: true,
-      mission: 1,
-      nextMissionUrl: '/team/mission/' + (parseInt(req.params.num) + 1)
+    Doris.getTeamByUserId(req.sesison.passport.user._id, function (err, team) {
+      res.render('team/waiting', {
+        missionCompletedWaiting: true,
+        mission: 1,
+        nextMissionUrl: '/team/mission/' + (parseInt(req.params.num) + 1),
+        teamName: team.name
+      });
     });
   });
 };
