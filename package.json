@@ -13,7 +13,10 @@
     "url": "git://github.com/frozzare/maria.git"
   },
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "passport": "*",
+    "passport-facebook": "*"
+  },
   "devDependencies": {
     "express": "3.0.x",
     "ejs": "~0.8.4",

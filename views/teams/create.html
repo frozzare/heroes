@@ -1,0 +1,14 @@
+<%
+  var title = "Create your team"
+    , previous = true;
+%>
+
+<%- include ../partials/header.html %>
+<div class="content m20">
+  <form method="post" action="/teams/create">
+    <input type="text" name="team_name" placeholder="Name" />
+    <input type="number" name="team_count" placeholder="Number of people" />
+    <button class="button button-block">Create</button>
+  </form>
+</div>
+<%- include ../partials/footer.html %>

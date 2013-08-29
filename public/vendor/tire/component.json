@@ -1,0 +1,14 @@
+{
+  "name": "tire",
+  "version": "1.2.0",
+  "description": "tire component",
+  "keywords": [
+    "tire",
+    "component"
+  ],
+  "main": "tire.js",
+  "scripts": [
+    "tire.js"
+  ],
+  "license": "MIT"
+}

@@ -1,0 +1,24 @@
+{
+  "name": "tire",
+  "version": "1.2.0",
+  "description": "tire component",
+  "keywords": [
+    "tire",
+    "component"
+  ],
+  "main": "tire.js",
+  "scripts": [
+    "tire.js"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/tirejs/package-tire",
+  "_release": "1.2.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.2.0",
+    "commit": "2702726c19a869e1c135e1c0933a47c21702ef38"
+  },
+  "_source": "git://github.com/tirejs/package-tire.git",
+  "_target": "*",
+  "_originalSource": "tire"
+}
