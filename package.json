@@ -1,0 +1,32 @@
+{
+  "name": "maria",
+  "version": "0.0.1",
+  "author": {
+    "name": "Fredrik Forsmo",
+    "email": "fredrik.forsmo@gmail.com"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/frozzare/maria.git"
+  },
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "express": "3.0.x",
+    "ejs": "~0.8.4",
+    "grunt": "~0.4.1",
+    "grunt-contrib-uglify": "~0.2.2",
+    "grunt-eslint": "0.0.1",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-watch": "~0.4.4",
+    "grunt-ejs": "~0.1.0",
+    "grunt-contrib-cssmin": "~0.6.1",
+    "bower": "~1.0.0"
+  },
+  "scripts": {
+    "postinstall": "bower install"
+  }
+}

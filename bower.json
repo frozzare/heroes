@@ -1,0 +1,8 @@
+{
+  "name": "maria",
+  "version": "0.0.1",
+  "dependencies": {
+    "normalize-scss": "latest",
+    "tire": "latest"
+  }
+}

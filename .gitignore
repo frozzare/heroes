@@ -1,0 +1,9 @@
+node_modules
+temp
+dist
+.sass-cache
+.tmp
+components
+bower_components
+public/*.html
+git public/*/*

@@ -1,0 +1,62 @@
+/*
+Syntax error: File to import not found or unreadable: normalize.
+              Load paths:
+                /u/heroes/src/scss
+                /Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/blueprint/stylesheets
+                /Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets
+                /u/heroes/bower_components/normalize-scss
+                Compass::SpriteImporter
+        on line 1 of /u/heroes/src/scss/style.scss
+
+1: /u/heroes/src/scss/style.scss
+
+Backtrace:
+/u/heroes/src/scss/style.scss:1
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/sass-3.2.6/lib/sass/tree/import_node.rb:67:in `rescue in import'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/sass-3.2.6/lib/sass/tree/import_node.rb:45:in `import'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/sass-3.2.6/lib/sass/tree/import_node.rb:28:in `imported_file'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/sass-3.2.6/lib/sass/tree/import_node.rb:37:in `css_import?'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/sass-3.2.6/lib/sass/tree/visitors/perform.rb:217:in `visit_import'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/sass-3.2.6/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/sass-3.2.6/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/sass-3.2.6/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/sass-3.2.6/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/sass-3.2.6/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/sass-3.2.6/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/sass-3.2.6/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/sass-3.2.6/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/sass-3.2.6/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/sass-3.2.6/lib/sass/tree/visitors/perform.rb:128:in `visit_root'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/sass-3.2.6/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/sass-3.2.6/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/sass-3.2.6/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/sass-3.2.6/lib/sass/tree/root_node.rb:20:in `render'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/sass-3.2.6/lib/sass/engine.rb:315:in `_render'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/sass-3.2.6/lib/sass/engine.rb:262:in `render'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:140:in `block (2 levels) in compile'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:139:in `block in compile'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/logger.rb:45:in `red'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:138:in `compile'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:118:in `compile_if_required'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:103:in `block (2 levels) in run'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `each'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `block in run'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/compiler.rb:100:in `run'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:147:in `recompile'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:68:in `perform'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/commands/base.rb:18:in `execute'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/commands/project_base.rb:19:in `execute'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:15:in `run!'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/compass-0.12.2/bin/compass:30:in `block in <top (required)>'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/compass-0.12.2/bin/compass:44:in `call'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/compass-0.12.2/bin/compass:44:in `<top (required)>'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/bin/compass:23:in `load'
+/Users/fredrik/.rbenv/versions/1.9.2-p290/bin/compass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: File to import not found or unreadable: normalize.\A               Load paths:\A                 /u/heroes/src/scss\A                 /Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/blueprint/stylesheets\A                 /Users/fredrik/.rbenv/versions/1.9.2-p290/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets\A                 /u/heroes/bower_components/normalize-scss\A                 Compass::SpriteImporter\A         on line 1 of /u/heroes/src/scss/style.scss\A \A 1: /u/heroes/src/scss/style.scss"; }
