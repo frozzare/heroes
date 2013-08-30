@@ -27,7 +27,7 @@ module.exports = function (app) {
   app.get('/teams/join', app.ensureAuthenticated, function (req, res) {
     var teamId = '5220936b8b2857fc06000001';
     if (require('os').hostname() === 'pukka') {
-      teamId = '52207eaf52191a2029000002';
+      teamId = '522094e678fff2812d000001';
     }
     if (req.session.passport.user !== undefined) {
       Doris.addUserToTeam(req.session.passport.user._id, teamId, function (err, user) {
