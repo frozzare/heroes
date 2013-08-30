@@ -15,7 +15,8 @@ module.exports = function (app) {
       description: req.body.description,
       points: req.body.points || 4,
       bounsPoints: req.body.bonusPoints || 0,
-      type: req.body.type || 0
+      type: req.body.type || 0,
+      image: req.body.image 
     }, function (err, task) {
       if (!err) res.redirect('/task/add');
     });
