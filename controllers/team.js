@@ -46,7 +46,7 @@ module.exports = function (app) {
                   }
                 });
               } else {
-                process.nextTick(function () {
+                //process.nextTick(function () {
                   if (team !== undefined) {
                     Doris.tasks(function (err, tasks) {
                       if (tasks !== undefined && tasks.length) {
@@ -65,7 +65,7 @@ module.exports = function (app) {
                                     task: task._id
                                   });
                                 } else {
-                                  //res.redirect('/team/' + req.params.id + '/mission/' + task.type + '/' + task._id);
+                                  res.redirect('/team/' + req.params.id + '/mission/' + task.type + '/' + task._id);
                                 }
                               } else {
                                 console.log('Task.findById');
@@ -89,7 +89,7 @@ module.exports = function (app) {
                     console.log(err);
                     res.redirect('/error');
                   }
-                });
+                //});
               }
             });
           } else {
