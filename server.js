@@ -4,5 +4,9 @@
 
 var app = require('./config/app')();
 
+if (require('os').hostname() === 'pukka') {
+  app.set('port', 4000);
+}
+
 // Listen to port.
-app.listen(process.argv[2] || app.get('port'));
+app.listen(app.get('port'));
