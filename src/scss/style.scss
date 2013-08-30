@@ -61,6 +61,32 @@ body {
       }
     }
   }
+  &.completed-view {
+    background: $bgColor url(../img/mission_accomplished.png) no-repeat;
+    background-size: 100%;
+    &> header {
+      background: transparent;
+      border: 0;
+      .title {
+        display: none;
+      }
+    }
+    &> .content {
+      margin-top: 50px;
+      background: transparent;
+      &.bg {
+        margin-top: 10px;
+        background: transparent url(../img/tasks/17.png) no-repeat;
+        background-size: 80%;
+      }
+      .text {
+        margin-top: 140px;
+      }
+      a {
+        margin-top: 430px;
+      }
+    }
+  }
 
   .bar-title .button-next {
     background: white;

@@ -57,6 +57,32 @@ body.standard-view > .content.bg {
 body.standard-view > .content .text {
   margin-top: 140px;
 }
+body.completed-view {
+  background: #e52421 url(../img/mission_accomplished.png) no-repeat;
+  background-size: 100%;
+}
+body.completed-view > header {
+  background: transparent;
+  border: 0;
+}
+body.completed-view > header .title {
+  display: none;
+}
+body.completed-view > .content {
+  margin-top: 50px;
+  background: transparent;
+}
+body.completed-view > .content.bg {
+  margin-top: 10px;
+  background: transparent url(../img/tasks/17.png) no-repeat;
+  background-size: 80%;
+}
+body.completed-view > .content .text {
+  margin-top: 140px;
+}
+body.completed-view > .content a {
+  margin-top: 430px;
+}
 body .bar-title .button-next {
   background: white;
   border: none;

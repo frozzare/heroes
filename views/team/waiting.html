@@ -2,6 +2,7 @@
   var title = teamName;
   if (typeof missionCompletedWaiting !== 'undefined') {
     title = 'Mission A';
+    var klass = 'standard-view team-waiting-b';
   } else {
     var klass = 'standard-view team-waiting-a';
   }
@@ -11,17 +12,19 @@
 <div class="content">
   <% if (typeof missionCompletedWaiting !== 'undefined') { %>
     <ul class="list">
-      <li>Player1 <span class="count green">Yes!</span></li>
-      <li>Player2 <span class="count green">Yes!</span></li>
-      <li>Player3 <span class="count red">No!</span></li>
-      <li>Player4 <span class="count">Waiting...</span></li>
+      <% for (var i = 0, l = numberofMembers; i < l; i++) { %>
+        <% if (typeof players[i] !== 'undefined') { %>
+          <li><%= players[i].displayName %><span class="count <%= completed[players[i]._id] ? 'green' : 'red' %>"><%= completed[players[i]._id] ? "Yes!" : "No!" %></span></li>
+        <% } else { %>
+          <li>Waiting on player <%= i + 1 %><span class="count">Waiting...</span></li>
+        <% } %>
+      <% } %>
     </ul>
-    <div class="text">
+    <!--<div class="text">
       <h2>Blubb</h2>
       <p>Sed viverra himenaeos pretium. Veniam culpa condimentum ea. Exercitation amet dictum.</p>
       <p>Class parturient himenaeos. Et integer porta rutrum in torquent. Eleifend leo elementum ligula varius mauris.</p>
-    </div>
-    <a class="button-positive button-block" href="<%= nextMissionUrl %>">Next mission</a>
+    </div>-->
   <% } else { %>
     <ul class="list">
       <% for (var i = 0, l = numberofMembers; i < l; i++) { %>
