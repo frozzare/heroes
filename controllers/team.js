@@ -65,7 +65,7 @@ module.exports = function (app) {
                                     task: task._id
                                   });
                                 } else {
-                                  res.redirect('/team/' + req.params.id + '/mission/' + task.type + '/' + task._id);
+                                  //res.redirect('/team/' + req.params.id + '/mission/' + task.type + '/' + task._id);
                                 }
                               } else {
                                 console.log('Task.findById');
