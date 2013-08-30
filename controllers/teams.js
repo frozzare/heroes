@@ -26,6 +26,9 @@ module.exports = function (app) {
   // GET: /teams/join
   app.get('/teams/join', app.ensureAuthenticated, function (req, res) {
     var teamId = '5220534fcae2aa0000000001';
+    if (require('os').hostname() === 'pukka') {
+      teamId = '52208f5b468b7b9e2a000003';
+    }
     if (req.session.passport.user !== undefined) {
       Doris.addUserToTeam(req.session.passport.user._id, teamId, function (err, user) {
         res.redirect('/team/' + teamId + '/waiting');
