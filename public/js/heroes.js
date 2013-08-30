@@ -6,7 +6,7 @@
   if ($('body.team-waiting-a').length) {
     var interval = setInterval(function () {
       $.getJSON(window.location.pathname + '.json', function (data) {
-        if (data.all === undefined) {
+        if (false && data.all === undefined) {
           var $list = $('ul.list').empty();
           for (var i = 0, l = data.numberofMembers; i < l; i++) {
             if (typeof data.players[i] !== 'undefined') {
@@ -24,10 +24,9 @@
   }
 
   if ($('body.shake').length) {
-    function shakeEventDidOccur () {
+    window.addEventListener('shake', function () {
       $('body.shake').find('form').submit();
-    }
-    window.addEventListener('shake', shakeEventDidOccur, false);
+    }, false);
   }
 
 })(window.jQuery);

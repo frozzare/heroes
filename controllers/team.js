@@ -35,7 +35,7 @@ module.exports = function (app) {
                         numberofMembers: team.numberofMembers,
                         id : req.params.id,
                         taskType: task.type,
-                        task: task._id
+                        task: task._id,
                       });
                     } else {
                       res.redirect('/team/' + req.params.id + '/mission/' + task.type + '/' + task._id);
@@ -165,12 +165,7 @@ module.exports = function (app) {
   // POST: /team/:id/mission/:num/play
   app.post('/team/:id/mission/:num/play/:task', app.ensureAuthenticated, function (req, res) {
     // (Math.round(Math.random())
-    var vailed = false;
-    if (req.body.mission_type === 1) {
-      vailed = req.body.mission_key === 'jkagekj090';
-    } else if (req.body.mission_type === 2) {
-      vailed = req.body.mission_key === 'shake';
-    }
+    var vailed = req.body.mission_key === 'jkagekj090' || req.body.mission_key === 'shake';
     res.redirect(getCompletedOrFailedUrl(req, vailed, req.params.task));
   });
 
