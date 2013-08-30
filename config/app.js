@@ -24,8 +24,9 @@ module.exports = function () {
     if (req.session.passport.user !== undefined) {
       return next();
     } else if (req.url !== '/login') {
-      //return res.redirect('/auth/facebook')
-      return next();
+      var on = require('os').hostname() === 'pukka';
+      //on = !on ? true : on;
+      return on ? res.redirect('/auth/facebook') : next();
     }
   };
 
