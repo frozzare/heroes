@@ -34,17 +34,9 @@ body.login-view {
   background-size: 100%;
   width: 100%;
 }
-body.login-view a {
-  background: url(../img/start_screen_btn_text.png) no-repeat;
-  text-indent: -9999px;
-  margin-top: 411px;
-  background-size: 100%;
-  width: 100%;
-  float: left;
-}
 body.standard-view {
   background: #e52421 url(../img/page_logo.png) no-repeat;
-  background-size: 100%;
+  background-size: 50%;
 }
 body.standard-view > header {
   background: transparent;
@@ -54,8 +46,16 @@ body.standard-view > header .title {
   display: none;
 }
 body.standard-view > .content {
-  margin-top: 130px;
+  margin-top: 50px;
   background: transparent;
+}
+body.standard-view > .content.bg {
+  margin-top: 10px;
+  background: transparent url(../img/tasks/17.png) no-repeat;
+  background-size: 80%;
+}
+body.standard-view > .content .text {
+  margin-top: 140px;
 }
 body .bar-title .button-next {
   background: white;

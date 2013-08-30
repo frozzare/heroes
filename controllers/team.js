@@ -151,10 +151,12 @@ module.exports = function (app) {
   app.get('/team/:id/mission/:num/play/:task', app.ensureAuthenticated, function (req, res) {
     if (require('fs').existsSync(__dirname + '/../views/team/mission/' + req.params.num + '.play.html')) {
       Doris.saveLastTask(req.params.id, req.params.task, function (err, team) {
-        res.render('team/mission/' + req.params.num + '.play.html', {
-          id: req.params.id,
-          taskType: req.params.num,
-          task: req.params.task
+        Doris.addMission(req.params.task, req.session.passport.user._id, function (err, mission) {
+          res.render('team/mission/' + req.params.num + '.play.html', {
+            id: req.params.id,
+            taskType: req.params.num,
+            task: req.params.task
+          });
         });
       });
     } else {
@@ -171,9 +173,7 @@ module.exports = function (app) {
 
   // GET: /team/:id/mission/:num/completed/:task
   app.get('/team/:id/mission/:num/completed/:task', app.ensureAuthenticated, function (req, res) {
-    Doris.saveMission(req.params.task, req.session.passport.user._id, {
-      completed: true
-    }, function (err, _) {
+    Doris.saveMission(req.params.task, req.session.passport.user._id, {}, function (err, _) {
       res.render('team/mission/completed', {
         waitingUrl: '/team/' + req.params.id + '/mission/' + req.params.num + '/waiting',
         id: req.params.id
