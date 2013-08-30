@@ -17,7 +17,7 @@
           }
         } else {
           clearInterval(interval);
-          window.location = '/team/' + data.id + '/mission/' + data.mission;
+          window.location = '/team/' + data.id + '/mission/' + data.mission + '/' + data.task;
         }
       });
     }, 1000);

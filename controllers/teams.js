@@ -14,7 +14,7 @@ module.exports = function (app) {
       membersOnTask: 0,
       points: 0,
       bounsPoints: 0,
-      lastMission: ''
+      lastTask: ''
     }, function (err, team) {
       // console.log(team);
       Doris.addUserToTeam(req.session.passport.user._id, ('' + team._id), function (err, user) {
@@ -25,7 +25,7 @@ module.exports = function (app) {
 
   // GET: /teams/join
   app.get('/teams/join', app.ensureAuthenticated, function (req, res) {
-    var teamId = '522043d09204f6dfec000001';
+    var teamId = '5220534fcae2aa0000000001';
     if (req.session.passport.user !== undefined) {
       Doris.addUserToTeam(req.session.passport.user._id, teamId, function (err, user) {
         res.redirect('/team/' + teamId + '/waiting');

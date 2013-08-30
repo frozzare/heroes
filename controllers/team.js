@@ -2,8 +2,8 @@ var Doris = require('../lib/doris');
 
 module.exports = function (app) {
 
-  function getCompletedOrFailedUrl (req, completed) {
-    return '/team/' + req.params.id + '/mission/' + req.params.num + '/' + (completed ? 'completed' : 'failed');
+  function getCompletedOrFailedUrl (req, completed, task) {
+    return '/team/' + req.params.id + '/mission/' + req.params.num + '/' + (completed ? 'completed' : 'failed') + '/' + task;
   }
 
   // GET: /team/:id
@@ -22,20 +22,77 @@ module.exports = function (app) {
           }
         }
 
-        if (players.length < team.numberofMembers) {
-          res.render('team/waiting', {
-            teamName: team.name,
-            players: players,
-            numberofMembers: team.numberofMembers,
-            id: req.params.id
-          });
-        } else {
-          res.redirect('/team/' + req.params.id + '/mission/' + 1);
-        }
+        Doris.getNextMission(req.params.id, function (err, task) {
+          if (!err) {
+            Doris.teamCompletedTask(req.params.id, ('' + task._id), function (err, completed, team) {
+              if (completed) {
+                Doris.getNextMissionInArray(req.params.id, ('' + task._id), completed, function (err, task) {
+                  if (task !== undefined) {
+                    if (players.length < team.numberofMembers) {
+                      res.render('team/waiting', {
+                        teamName: team.name,
+                        players: players,
+                        numberofMembers: team.numberofMembers,
+                        id : req.params.id,
+                        taskType: task.type,
+                        task: task._id
+                      });
+                    } else {
+                      res.redirect('/team/' + req.params.id + '/mission/' + task.type + '/' + task._id);
+                    }
+                  } else {
+                    console.log('getNextMissionInArray');
+                    res.render('team/mission-missing');
+                  }
+                });
+              } else {
+                Doris.Team.findById(req.params.id, function (err, team) {
+                  if (team !== undefined && !team.lastTask.length) {
+                    Doris.saveLastTask(('' + team._id), ('' + task._id), function (err, team) {
+                      if (!err) {
+                        Doris.Task.findById(('' + task._id), function (err, task) {
+                          if (task !== undefined) {
+                            if (players.length < team.numberofMembers) {
+                              res.render('team/waiting', {
+                                teamName: team.name,
+                                players: players,
+                                numberofMembers: team.numberofMembers,
+                                id : req.params.id,
+                                taskType: task.type,
+                                task: task._id
+                              });
+                            } else {
+                              res.redirect('/team/' + req.params.id + '/mission/' + task.type + '/' + task._id);
+                            }
+                          } else {
+                            console.log('Task.findById');
+                            res.render('team/mission-missing');
+                          }
+                        });
+                      } else {
+                        console.log('Task.findById');
+                        console.log(err);
+                        res.render('team/mission-missing');
+                      }
+                    });
+                  } else {
+                    console.log('Team.findById');
+                    console.log(err);
+                    res.redirect('/error');
+                  }
+                });
+              }
+            });
+          } else {
+            console.log('getNextMission');
+            res.redirect('/error');
+          }
+        });
       });
     });
   });
 
+  // GET: /team/:id/waiting.json
   app.get('/team/:id/waiting.json', function (req, res) {
     Doris.getTeam(req.params.id, function (err, team) {
       Doris.users(function (err, users) {
@@ -69,23 +126,27 @@ module.exports = function (app) {
   });
 
   // GET: /team/:id/mission/:num
-  app.get('/team/:id/mission/:num', app.ensureAuthenticated, function (req, res) {
+  app.get('/team/:id/mission/:num/:task', app.ensureAuthenticated, function (req, res) {
     if (require('fs').existsSync(__dirname + '/../views/team/mission/' + req.params.num + '.html')) {
       res.render('team/mission/' + req.params.num, {
         id: req.params.id,
-        taskType: req.params.num
+        taskType: req.params.num,
+        task: req.params.task
       });
     } else {
       res.render('team/mission-missing');
     }
   });
 
-  // GET: /team/:id/mission/:num
-  app.get('/team/:id/mission/:num/play', app.ensureAuthenticated, function (req, res) {
+  // GET: /team/:id/mission/:num/play
+  app.get('/team/:id/mission/:num/play/:task', app.ensureAuthenticated, function (req, res) {
     if (require('fs').existsSync(__dirname + '/../views/team/mission/' + req.params.num + '.play.html')) {
-      res.render('team/mission/' + req.params.num + '.play.html', {
-        id: req.params.id,
-        taskType: req.params.num
+      Doris.saveLastTask(req.params.id, req.params.task, function (err, team) {
+        res.render('team/mission/' + req.params.num + '.play.html', {
+          id: req.params.id,
+          taskType: req.params.num,
+          task: req.params.task
+        });
       });
     } else {
       res.render('/error');
@@ -93,22 +154,26 @@ module.exports = function (app) {
   });
 
   // POST: /team/:id/mission/:num/play
-  app.post('/team/:id/mission/:num/play', app.ensureAuthenticated, function (req, res) {
+  app.post('/team/:id/mission/:num/play/:task', app.ensureAuthenticated, function (req, res) {
     // (Math.round(Math.random())
     var vailed = req.body.mission_key === 'jkagekj090';
-    res.redirect(getCompletedOrFailedUrl(req, vailed));
+    res.redirect(getCompletedOrFailedUrl(req, vailed, req.params.task));
   });
 
-  // GET: /team/:id/mission/:num/completed
-  app.get('/team/:id/mission/:num/completed', app.ensureAuthenticated, function (req, res) {
-    res.render('team/mission/completed', {
-      waitingUrl: '/team/' + req.params.id + '/mission/' + req.params.num + '/waiting',
-      id: req.params.id
+  // GET: /team/:id/mission/:num/completed/:task
+  app.get('/team/:id/mission/:num/completed/:task', app.ensureAuthenticated, function (req, res) {
+    Doris.completeMission(req.params.task, req.session.passport.user._id, {
+      completed: true
+    }, function (err, _) {
+      res.render('team/mission/completed', {
+        waitingUrl: '/team/' + req.params.id + '/mission/' + req.params.num + '/waiting',
+        id: req.params.id
+      });
     });
   });
 
-  // GET: /team/:id/mission/:num/failed
-  app.get('/team/:id/mission/:num/failed', app.ensureAuthenticated, function (req, res) {
+  // GET: /team/:id/mission/:num/failed/:task
+  app.get('/team/:id/mission/:num/failed/:task', app.ensureAuthenticated, function (req, res) {
     res.render('team/mission/failed', {
       nextMissionUrl: '/team/' + req.params.id + '/mission/' + req.params.num,
       id: req.params.id

@@ -13,11 +13,6 @@ module.exports = function (app) {
     res.redirect('/');
   });
 
-  app.get('/*', function (req, res, next) {
-    console.log(req.url);
-    next();
-  });
-
   app.get('/test', function (req, res) {
     var Doris = require('../lib/doris');
     /*Doris.addUserToTeam('521fadeac42aab5016000001', '1', function () {
