@@ -7,11 +7,9 @@
 <div class="content">
   <div class="text">
     <h2>Mission background</h1>
-    <p>Convallis ligula tristique erat. Aenean lobortis a. Ullamcorper dui himenaeos nulla suspendisse.</p>
-    <h2>Mission</h2>
-    <p>Convallis ligula tristique erat. Aenean lobortis a. Ullamcorper dui himenaeos nulla suspendisse.</p>
-    <h2>Points</h2>
-    <p>This mission will give you 4 points</p>
+    <p><%= task.background %></p>
+
+    <h2>Points <%= task.points %></h2>
   </div>
   <a class="button-positive button-block" href="/team/<%= id %>/mission/<%= taskType %>/play/<%= task %>">Start mission</a>
 </div>
