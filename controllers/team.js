@@ -171,7 +171,7 @@ module.exports = function (app) {
 
   // GET: /team/:id/mission/:num/completed/:task
   app.get('/team/:id/mission/:num/completed/:task', app.ensureAuthenticated, function (req, res) {
-    Doris.completeMission(req.params.task, req.session.passport.user._id, {
+    Doris.saveMission(req.params.task, req.session.passport.user._id, {
       completed: true
     }, function (err, _) {
       res.render('team/mission/completed', {
