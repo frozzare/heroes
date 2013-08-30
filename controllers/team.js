@@ -46,33 +46,43 @@ module.exports = function (app) {
                   }
                 });
               } else {
-                Doris.Team.findById(req.params.id, function (err, team) {
-                  if (team !== undefined && !team.lastTask.length) {
-                    Doris.saveLastTask(('' + team._id), ('' + task._id), function (err, team) {
-                      if (!err) {
-                        Doris.Task.findById(('' + task._id), function (err, task) {
-                          if (task !== undefined) {
-                            if (players.length < team.numberofMembers) {
-                              res.render('team/waiting', {
-                                teamName: team.name,
-                                players: players,
-                                numberofMembers: team.numberofMembers,
-                                id : req.params.id,
-                                taskType: task.type,
-                                task: task._id
-                              });
-                            } else {
-                              res.redirect('/team/' + req.params.id + '/mission/' + task.type + '/' + task._id);
-                            }
+                process.nextTick(function () {
+                  console.log(team);
+                  if (team !== undefined) {
+                    Doris.tasks(function (err, tasks) {
+                      if (tasks !== undefined && tasks.length) {
+                        task = tasks[0];
+                        Doris.saveLastTask(('' + team._id), ('' + task._id), function (err, team) {
+                          if (!err) {
+                            Doris.Task.findById(('' + task._id), function (err, task) {
+                              if (task !== undefined) {
+                                if (players.length < team.numberofMembers) {
+                                  res.render('team/waiting', {
+                                    teamName: team.name,
+                                    players: players,
+                                    numberofMembers: team.numberofMembers,
+                                    id : req.params.id,
+                                    taskType: task.type,
+                                    task: task._id
+                                  });
+                                } else {
+                                  res.redirect('/team/' + req.params.id + '/mission/' + task.type + '/' + task._id);
+                                }
+                              } else {
+                                console.log('Task.findById');
+                                res.render('team/mission-missing');
+                              }
+                            });
                           } else {
                             console.log('Task.findById');
+                            console.log(err);
                             res.render('team/mission-missing');
                           }
                         });
                       } else {
-                        console.log('Task.findById');
+                        console.log('Doris.tasks');
                         console.log(err);
-                        res.render('team/mission-missing');
+                        res.redirect('/error');
                       }
                     });
                   } else {
