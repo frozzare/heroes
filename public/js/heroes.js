@@ -23,4 +23,11 @@
     }, 1000);
   }
 
+  if ($('body.shake').length) {
+    function shakeEventDidOccur () {
+      $('body.shake').find('form').submit();
+    }
+    window.addEventListener('shake', shakeEventDidOccur, false);
+  }
+
 })(window.jQuery);

@@ -1,0 +1,18 @@
+<%
+  var title = 'Mission ' + taskType
+    , klass = 'standard-view';
+%>
+
+<%- include ../../partials/header.html %>
+<div class="content">
+  <div class="text">
+    <h2>Mission background</h1>
+    <p>Convallis ligula tristique erat. Aenean lobortis a. Ullamcorper dui himenaeos nulla suspendisse.</p>
+    <h2>Mission</h2>
+    <p>Convallis ligula tristique erat. Aenean lobortis a. Ullamcorper dui himenaeos nulla suspendisse.</p>
+    <h2>Points</h2>
+    <p>This mission will give you 4 points</p>
+  </div>
+  <a class="button-positive button-block" href="/team/<%= id %>/mission/<%= taskType %>/play/<%= task %>">Start mission</a>
+</div>
+<%- include ../../partials/footer.html %>

@@ -1,0 +1,37 @@
+{
+  "name": "shake.js",
+  "description": "A custom 'shake' event plugin for mobile web browsers using device accelerometer.",
+  "author": {
+    "name": "Alex Gibson",
+    "email": "alxgbsn@gmail.com"
+  },
+  "keywords": [
+    "javascript",
+    "shake",
+    "gesture",
+    "event"
+  ],
+  "main": "./shake.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexgibson/shake.js.git"
+  },
+  "readme": "README.md",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "dependencies": {},
+  "homepage": "https://github.com/alexgibson/shake.js",
+  "_release": "master",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "37f27d03fd7eade483d0d3336b4f4955f33ab323"
+  },
+  "_source": "git://github.com/alexgibson/shake.js.git",
+  "_target": "*",
+  "_originalSource": "shake.js"
+}

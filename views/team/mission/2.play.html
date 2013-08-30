@@ -1,0 +1,16 @@
+<%
+  var title = 'Mission ' + taskType
+    , shake = true;
+%>
+
+<%- include ../../partials/header.html %>
+<div class="content">
+  <div class="text">
+    <h2>Shake your phone!</h1>
+    <form method="post" id="form" action="/team/<%= id %>/mission/0/play/<%= task %>">
+      <input type="hidden" id="mission_type" name="misson_type" value="2" />
+      <input type="hidden" id="mission_key" name="mission_key" value="shake" />
+    </form>
+  </div>
+</div>
+<%- include ../../partials/footer.html %>

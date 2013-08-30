@@ -1,5 +1,8 @@
   <% if (typeof production === 'undefined') { %>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <% if (typeof shake !== 'undefined') { %>
+      <script src="/vendor/shake.js/shake.js"
+    <% } %>
     <script src="/js/heroes.js"></script>
   <% } else { %>
     <script src="js/maria.min.js">

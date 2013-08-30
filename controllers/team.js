@@ -47,7 +47,6 @@ module.exports = function (app) {
                 });
               } else {
                 process.nextTick(function () {
-                  console.log(team);
                   if (team !== undefined) {
                     Doris.tasks(function (err, tasks) {
                       if (tasks !== undefined && tasks.length) {
@@ -166,7 +165,12 @@ module.exports = function (app) {
   // POST: /team/:id/mission/:num/play
   app.post('/team/:id/mission/:num/play/:task', app.ensureAuthenticated, function (req, res) {
     // (Math.round(Math.random())
-    var vailed = req.body.mission_key === 'jkagekj090';
+    var vailed = false;
+    if (req.body.mission_type === 1) {
+      vailed = req.body.mission_key === 'jkagekj090';
+    } else if (req.body.mission_type === 2) {
+      vailed = req.body.mission_key === 'shake';
+    }
     res.redirect(getCompletedOrFailedUrl(req, vailed, req.params.task));
   });
 

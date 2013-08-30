@@ -4,6 +4,7 @@
   "dependencies": {
     "normalize-scss": "latest",
     "tire": "latest",
-    "ratchet": "latest"
+    "ratchet": "latest",
+    "shake.js": "latest"
   }
 }
