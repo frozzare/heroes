@@ -34,6 +34,9 @@ body.login-view {
   background-size: 100%;
   width: 100%;
 }
+body.login-view a {
+  display: none;
+}
 body.standard-view {
   background: #e52421 url(../img/page_logo.png) no-repeat;
   background-size: 50%;

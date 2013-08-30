@@ -37,6 +37,9 @@ body {
     background: $bgColor url(../img/start_screen.png) no-repeat;
     background-size: 100%;
     width: 100%;
+    a {
+      display: none;
+    }
   }
   &.standard-view {
     background: $bgColor url(../img/page_logo.png) no-repeat;
