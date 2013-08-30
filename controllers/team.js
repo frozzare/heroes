@@ -21,11 +21,48 @@ module.exports = function (app) {
             players.push(users[i]);
           }
         }
-        res.render('team/waiting', {
-          teamName: team.name,
-          players: players,
-          numberofMembers: team.numberofMembers,
-          id: req.params.id
+
+        if (players.length < team.numberofMembers) {
+          res.render('team/waiting', {
+            teamName: team.name,
+            players: players,
+            numberofMembers: team.numberofMembers,
+            id: req.params.id
+          });
+        } else {
+          res.redirect('/team/' + req.params.id + '/mission/' + 1);
+        }
+      });
+    });
+  });
+
+  app.get('/team/:id/waiting.json', function (req, res) {
+    Doris.getTeam(req.params.id, function (err, team) {
+      Doris.users(function (err, users) {
+        var players = [];
+
+        for (var i = 0, l = users.length; i < l; i++) {
+          if (users[i].teamId === req.params.id) {
+            players.push(users[i]);
+          }
+        }
+
+        Doris.getNextMission(req.params.id, function (err, task) {
+          if (players.length < team.numberofMembers) {
+            res.json({
+              teamName: team.name,
+              players: players,
+              numberofMembers: team.numberofMembers,
+              id: req.params.id,
+              mission: task.type
+            });
+          } else {
+            res.json({
+              all: true,
+              id: req.params.id,
+              mission: task.type
+            });
+          }
         });
       });
     });
@@ -34,8 +71,9 @@ module.exports = function (app) {
   // GET: /team/:id/mission/:num
   app.get('/team/:id/mission/:num', app.ensureAuthenticated, function (req, res) {
     if (require('fs').existsSync(__dirname + '/../views/team/mission/' + req.params.num + '.html')) {
-      res.render('team/' + req.params.id + '/mission/' + req.params.num, {
-        id: req.params.id
+      res.render('team/mission/' + req.params.num, {
+        id: req.params.id,
+        taskType: req.params.num
       });
     } else {
       res.render('team/mission-missing');
@@ -45,8 +83,9 @@ module.exports = function (app) {
   // GET: /team/:id/mission/:num
   app.get('/team/:id/mission/:num/play', app.ensureAuthenticated, function (req, res) {
     if (require('fs').existsSync(__dirname + '/../views/team/mission/' + req.params.num + '.play.html')) {
-      res.render('team/' + req.params.id + '/mission/' + req.params.num + '.play.html', {
-        id: req.params.id
+      res.render('team/mission/' + req.params.num + '.play.html', {
+        id: req.params.id,
+        taskType: req.params.num
       });
     } else {
       res.render('/error');
@@ -55,7 +94,8 @@ module.exports = function (app) {
 
   // POST: /team/:id/mission/:num/play
   app.post('/team/:id/mission/:num/play', app.ensureAuthenticated, function (req, res) {
-    var vailed = req.body.mission_key === (Math.round(Math.random()) ? 'jkagekj090' : '20+20+30+3');
+    // (Math.round(Math.random())
+    var vailed = req.body.mission_key === 'jkagekj090';
     res.redirect(getCompletedOrFailedUrl(req, vailed));
   });
 

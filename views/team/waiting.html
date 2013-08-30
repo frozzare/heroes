@@ -2,6 +2,8 @@
   var title = teamName;
   if (typeof missionCompletedWaiting !== 'undefined') {
     title = 'Mission A';
+  } else {
+    var klass = 'standard-view team-waiting-a';
   }
 %>
 
@@ -22,7 +24,7 @@
     <a class="button-positive button-block" href="<%= nextMissionUrl %>">Next mission</a>
   <% } else { %>
     <ul class="list">
-      <% for (var i = 0, l = (numberofMembers - 1); i < l; i++) { %>
+      <% for (var i = 0, l = numberofMembers; i < l; i++) { %>
         <% if (typeof players[i] !== 'undefined') { %>
           <li><%= players[i].displayName %></li>
         <% } else { %>

@@ -25,7 +25,7 @@ module.exports = function () {
       return next();
     } else if (req.url !== '/login') {
       var on = require('os').hostname() === 'pukka';
-      //on = !on ? true : on;
+      on = !on ? true : on;
       return on ? res.redirect('/auth/facebook') : next();
     }
   };
